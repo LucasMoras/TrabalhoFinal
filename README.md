@@ -1,2 +1,2 @@
 # TrabalhoFinal
-Integrantes do grupo: Lucas Moras, Bruno Vieira e Matheus Oliveira.
+Integrantes do grupo: Lucas Moras e Matheus Oliveira.
