@@ -1,8 +1,17 @@
 package br.com.DTO;
 
 public class ClientesDTO {
+     private int id_cliente;
     private String nome_cliente, endereço_cliente, telefone_cliente, email_cliente, cpf_cliente, cnpj_cliente;
 
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+    
     public String getNome_cliente() {
         return nome_cliente;
     }

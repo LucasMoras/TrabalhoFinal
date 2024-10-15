@@ -19,8 +19,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Menu = new javax.swing.JMenuBar();
         MenuCadastro = new javax.swing.JMenu();
         subMenuUsuarios = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        Cliente = new javax.swing.JMenuItem();
+        Agenda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -37,7 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
+            .addGap(0, 634, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,14 +62,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         MenuCadastro.add(subMenuUsuarios);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem2.setText("Cliente");
-        MenuCadastro.add(jMenuItem2);
+        Cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Cliente.setText("Cliente");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
+        MenuCadastro.add(Cliente);
 
         Menu.add(MenuCadastro);
 
-        jMenu1.setText("Agenda");
-        Menu.add(jMenu1);
+        Agenda.setText("Agenda");
+        Agenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgendaActionPerformed(evt);
+            }
+        });
+        Menu.add(Agenda);
 
         setJMenuBar(Menu);
 
@@ -78,35 +88,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
+                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuarioPrincipal)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lblData)))
-                .addGap(38, 38, 38))
+                    .addComponent(lblData)
+                    .addComponent(lblUsuarioPrincipal))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
                 .addComponent(lblUsuarioPrincipal)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblData)
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(663, 494));
+        setSize(new java.awt.Dimension(781, 537));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void subMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuUsuariosActionPerformed
 
-        TelaUsuario tusuario = new TelaUsuario();
-        tusuario.setVisible(true);
-        Desktop.add(tusuario);
+        TelaUsuario tlUsu = new TelaUsuario();
+        tlUsu.setVisible(true);
+        Desktop.add(tlUsu);
         
     }//GEN-LAST:event_subMenuUsuariosActionPerformed
 
@@ -118,6 +126,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        
+        TelaCliente tlCli = new TelaCliente();
+        tlCli.setVisible(true);
+        Desktop.add(tlCli);
+        
+    }//GEN-LAST:event_ClienteActionPerformed
+
+    private void AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendaActionPerformed
+         
+        TelaAgenda tlAge = new TelaAgenda();
+        tlAge.setVisible(true);
+        Desktop.add(tlAge);
+        
+    }//GEN-LAST:event_AgendaActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -128,11 +152,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Agenda;
+    private javax.swing.JMenuItem Cliente;
     private javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuBar Menu;
     public static javax.swing.JMenu MenuCadastro;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblData;
     public static javax.swing.JLabel lblUsuarioPrincipal;
     public static javax.swing.JMenuItem subMenuUsuarios;

@@ -1,6 +1,7 @@
 package br.com.DAO;
 
 import br.com.DTO.ClientesDTO;
+import br.com.views.TelaCliente;
 import br.com.views.TelaUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +16,13 @@ public class ClienteDAO {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-public void inserirUsuario(ClientesDTO objClientesDTO) {
-        String sql = "insert into tb_usuarios (id_usuario, usuario, login, senha, perfil)" + "values (?, ?, ?, ?, ?)";
+public void inserirCliente(ClientesDTO objClientesDTO) {
+        String sql = "insert into tb_clientes (id_cliente, cliente, endereco, telefone, email, cpf, cnpj)" + "values (?, ?, ?, ?, ?, ? ,?)";
         conexao = ConexaoDAO.conector();
 
         try {
-            pst = conexao.prepareStatement(sql);
+            pst = conexao.prepareStatement(sql);       
+            pst.setInt(1, objClientesDTO.getId_cliente());
             pst.setString(2, objClientesDTO.getNome_cliente());
             pst.setString(3, objClientesDTO.getEndereço_cliente());
             pst.setString(4, objClientesDTO.getTelefone_cliente());
@@ -43,21 +45,24 @@ public void inserirUsuario(ClientesDTO objClientesDTO) {
     }
 
     public void pesquisar(ClientesDTO objClientesDTO) {
-        String sql = "select * from tb_usuarios where id_usuario = ?";
+        String sql = "select * from tb_clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, objClientesDTO.);
+            pst.setInt(1, objClientesDTO.getId_cliente());
+            
             rs = pst.executeQuery();
             if (rs.next()) {
-                TelaUsuario.txtNomeUsu.setText(rs.getString(2));
-                TelaUsuario.txtLoginUsu.setText(rs.getString(3));
-                TelaUsuario.txtSenhaUsu.setText(rs.getString(4));
-                TelaUsuario.cboPerfilUsu.setSelectedItem(rs.getString(5));
+                TelaCliente.txtNomeCli.setText(rs.getString(2));
+                TelaCliente.txtEnderecoCli.setText(rs.getString(3));
+                TelaCliente.txtTelefoneCli.setText(rs.getString(4));
+                TelaCliente.txtEmailCli.setText(rs.getString(5));
+                TelaCliente.txtCPFcli.setText(rs.getString(6));
+                TelaCliente.txtCNPJcli.setText(rs.getString(7));
                 conexao.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário não cadastrado!");
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!");
                 limparCampos();
             }
 
@@ -67,22 +72,24 @@ public void inserirUsuario(ClientesDTO objClientesDTO) {
     }
 
     public void pesquisaAuto() {
-        String sql = "select * from tb_usuarios";
+        String sql = "select * from tb_clientes";
         conexao = ConexaoDAO.conector();
 
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TelaUsuario.TbUsuarios.getModel();
+            DefaultTableModel model = (DefaultTableModel) TelaCliente.TbClientes.getModel();
             model.setNumRows(0);
 
             while (rs.next()) {
-                int id = rs.getInt("id_usuario");
-                String nome = rs.getString("usuario");
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                String perfil = rs.getString("perfil");
-                model.addRow(new Object[]{id, nome, login, senha, perfil});
+                int id = rs.getInt("id_cliente");
+                String nome = rs.getString("cliente");
+                String endereco = rs.getString("endereco");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
+                String cnpj = rs.getString("cnpj");
+                model.addRow(new Object[]{id, nome, endereco, telefone, email, cpf, cnpj});
             }
             conexao.close();
         } catch (Exception e) {
@@ -91,18 +98,20 @@ public void inserirUsuario(ClientesDTO objClientesDTO) {
     }
 
     public void editar(ClientesDTO objClientesDTO) {
-        String sql = "update tb_usuarios set usuario = ?, login = ?, senha = ?, perfil = ? where id_usuario = ?";
+        String sql = "update tb_clientes set cliente = ?, endereco= ?, telefone = ?, email = ?, CPF = ?, CNPJ = ? where id_cliente = ?";
         conexao = ConexaoDAO.conector();
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(5, objClientesDTO.getId_uauario());
-            pst.setString(4, objClientesDTO.getPerfil_usuario());
-            pst.setString(3, objClientesDTO.getSenha_usuario());
-            pst.setString(2, objClientesDTO.getLogin_usuario());
-            pst.setString(1, objClientesDTO.getNome_usuario());
+            pst.setInt(7, objClientesDTO.getId_cliente());
+            pst.setString(1, objClientesDTO.getNome_cliente());
+            pst.setString(2, objClientesDTO.getEndereço_cliente());
+            pst.setString(3, objClientesDTO.getTelefone_cliente());        
+            pst.setString(4, objClientesDTO.getEmail_cliente());
+            pst.setString(5, objClientesDTO.getCpf_cliente());
+            pst.setString(6, objClientesDTO.getCnpj_cliente());
             int add = pst.executeUpdate();
             if (add > 0) {
-                JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
+                JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
                 pesquisaAuto();
                 conexao.close();
                 limparCampos();
@@ -113,15 +122,15 @@ public void inserirUsuario(ClientesDTO objClientesDTO) {
     }
 
     public void deletar(ClientesDTO objClientesDTO) {
-        String sql = "delete from tb_usuarios where id_usuario = ?";
+        String sql = "delete from tb_clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, objClientesDTO.getId_uauario());
+            pst.setInt(1, objClientesDTO.getId_cliente());
             int del = pst.executeUpdate();
             if (del > 0) {
-                JOptionPane.showMessageDialog(null, " Usuário deletado com sucesso!");
+                JOptionPane.showMessageDialog(null, " Cliente deletado com sucesso!");
                 pesquisaAuto();
                 conexao.close();
                 limparCampos();
@@ -132,10 +141,12 @@ public void inserirUsuario(ClientesDTO objClientesDTO) {
         }
     }
     public void limparCampos() {
-        TelaUsuario.txtIdUsu.setText(null);
-        TelaUsuario.txtLoginUsu.setText(null);
-        TelaUsuario.txtNomeUsu.setText(null);
-        TelaUsuario.txtSenhaUsu.setText(null);
-        TelaUsuario.cboPerfilUsu.setSelectedItem(1);
+        TelaCliente.txtIdCli.setText(null);
+        TelaCliente.txtNomeCli.setText(null);
+        TelaCliente.txtEnderecoCli.setText(null);
+        TelaCliente.txtTelefoneCli.setText(null);
+        TelaCliente.txtEmailCli.setText(null);
+        TelaCliente.txtCPFcli.setText(null);
+        TelaCliente.txtCNPJcli.setText(null);
     }
 }
