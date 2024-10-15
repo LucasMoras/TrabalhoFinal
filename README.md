@@ -4,7 +4,9 @@ Integrantes do grupo: Lucas Moras e Matheus Oliveira.
 # Documentação
 Sobre o projeto:
 
-Instruções de execução: Para executar o projeto precisamos ter o Netbeans entre as versões 8.2 ou a mais recente instalado em uma maquina com Windows, Linux ou MacOS. Clonando o código e abrindo-o no programa devemos colocar o arquivo jar de conexão na biblioteca do projeto, cujo o nome é mysql-connector-j-9.0.0, que serve para estabelecer conexão com o banco de dados. Cola-se os comandos no banco e execute o projeto, após a execução use o usuario e senha de perfil root nos campos de login para ter acesso e passar a usar.
+Instruções de execução:
+
+Para executar o projeto precisamos ter o Netbeans entre as versões 8.2 ou a mais recente instalado em uma maquina com Windows, Linux ou MacOS. Clonando o código e abrindo-o no programa devemos colocar o arquivo jar de conexão na biblioteca do projeto, cujo o nome é mysql-connector-j-9.0.0, que serve para estabelecer conexão com o banco de dados. Cola-se os comandos no banco e execute o projeto, após a execução use o usuario e senha de perfil root nos campos de login para ter acesso e passar a usar.
 
 Código MySQL:
 
