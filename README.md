@@ -16,23 +16,22 @@ create database trabalhofinal;
 
 use trabalhofinal;
 
-create table tb_usuarios(
-id_usuario int primary key,
-usuario varchar(50) not null,
-login varchar(50) not null unique,
-senha varchar(15)not null,
-perfil varchar(10)not null
-);
-
-insert into tb_usuarios(id_usuario, usuario, login, senha, perfil)
-values(1, 'Nome qualquer', 'root', '123', 'admin');
-
 create table tb_clientes(
 id_cliente int primary key,
 cliente varchar(50) not null,
-endereco varchar(50) not null unique,
-telefone varchar(30) not null,
-email varchar(50) not null,
-cpf varchar(11) not null,
-cnpj(14) not null
+endereco varchar(50) not null,
+telefone int(50)not null,
+email varchar(50)not null,
+cpf int(11)not null,
+cnpj int(14)not null
 );
+create table tb_agenda(
+nome varchar(50) not null,
+dataa varchar(50) not null,
+hora varchar(50) not null,
+assunto varchar(500) not null
+);
+select * from tb_agenda;
+
+insert into tb_usuarios(id_usuario, usuario, login, senha, perfil)
+values(1, 'Lucas', 'root', '123', 'admin');
