@@ -37,7 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGap(0, 782, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,6 +74,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Menu.add(MenuCadastro);
 
         Agenda.setText("Agenda");
+        Agenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgendaMouseClicked(evt);
+            }
+        });
         Agenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgendaActionPerformed(evt);
@@ -88,7 +93,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblData)
@@ -97,16 +102,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblUsuarioPrincipal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblData)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(781, 537));
+        setSize(new java.awt.Dimension(929, 551));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,12 +140,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendaActionPerformed
-         
-        TelaAgenda tlAge = new TelaAgenda();
-        tlAge.setVisible(true);
-        Desktop.add(tlAge);
         
     }//GEN-LAST:event_AgendaActionPerformed
+
+    private void AgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendaMouseClicked
+       TelaAgenda tlAge = new TelaAgenda();
+        tlAge.setVisible(true);
+        Desktop.add(tlAge);
+    }//GEN-LAST:event_AgendaMouseClicked
 
     public static void main(String args[]) {
 

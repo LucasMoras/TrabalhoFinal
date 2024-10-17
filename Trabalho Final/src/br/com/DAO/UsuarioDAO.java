@@ -61,7 +61,7 @@ public class UsuarioDAO {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, objUsuarioDTO.getId_uauario());
             pst.setString(2, objUsuarioDTO.getNome_usuario());
-            pst.setString(2, objUsuarioDTO.getLogin_usuario());
+            pst.setString(3, objUsuarioDTO.getLogin_usuario());
             pst.setString(4, objUsuarioDTO.getSenha_usuario());
             pst.setString(5, objUsuarioDTO.getPerfil_usuario());
             int add  = pst.executeUpdate();

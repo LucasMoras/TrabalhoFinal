@@ -7,13 +7,8 @@ import br.com.DTO.UsuarioDTO;
 
 public class TelaUsuario extends javax.swing.JInternalFrame {
 
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-
     public TelaUsuario() {
         initComponents();
-        conexao = ConexaoDAO.conector();
         UsuarioDAO ojbUsuarioDAO = new UsuarioDAO();
         ojbUsuarioDAO.pesquisaAuto();
     }
@@ -35,7 +30,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         txtSenhaUsu = new javax.swing.JTextField();
         cboPerfilUsu = new javax.swing.JComboBox<>();
         btnUsuCreate = new javax.swing.JButton();
-        btnUsuread = new javax.swing.JButton();
         btnUsuUpdate = new javax.swing.JButton();
         btnUsuDelete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -90,15 +84,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnUsuCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuCreateActionPerformed(evt);
-            }
-        });
-
-        btnUsuread.setText("Pesquisar");
-        btnUsuread.setToolTipText("Pesquisar");
-        btnUsuread.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuread.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsureadActionPerformed(evt);
             }
         });
 
@@ -159,7 +144,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtIdUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
@@ -185,11 +170,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUsuread, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUsuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -218,8 +201,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnUsuread, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                     .addComponent(btnUsuUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -227,7 +209,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 559, 479);
+        setBounds(0, 0, 607, 479);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUsuActionPerformed
@@ -267,26 +249,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         UsuarioDAO objUsuarioDAO = new UsuarioDAO();
         objUsuarioDAO.deletar(objusuarioDTO);
     }//GEN-LAST:event_btnUsuDeleteActionPerformed
-
-    private void btnUsureadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsureadActionPerformed
-
-        int id_usuario = Integer.parseInt(txtIdUsu.getText());
-        String nome_usuario = txtNomeUsu.getText();
-        String login_usuario = txtLoginUsu.getText();
-        String senha_usuario = txtSenhaUsu.getText();
-        String perfil_usuario = cboPerfilUsu.getSelectedItem().toString();
-
-        UsuarioDTO objusuarioDTO = new UsuarioDTO();
-        objusuarioDTO.setId_uauario(id_usuario);
-        objusuarioDTO.setNome_usuario(nome_usuario);
-        objusuarioDTO.setLogin_usuario(login_usuario);
-        objusuarioDTO.setSenha_usuario(senha_usuario);
-        objusuarioDTO.setPerfil_usuario(perfil_usuario);
-
-        UsuarioDAO objUsuarioDAO = new UsuarioDAO();
-        objUsuarioDAO.pesquisar(objusuarioDTO);
-        
-    }//GEN-LAST:event_btnUsureadActionPerformed
 
     private void btnUsuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuUpdateActionPerformed
 
@@ -338,7 +300,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUsuCreate;
     private javax.swing.JButton btnUsuDelete;
     private javax.swing.JButton btnUsuUpdate;
-    private javax.swing.JButton btnUsuread;
     public static javax.swing.JComboBox<String> cboPerfilUsu;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
