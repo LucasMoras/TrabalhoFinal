@@ -25,7 +25,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnUsuCreate = new javax.swing.JButton();
-        btnUsuread = new javax.swing.JButton();
         btnUsuUpdate = new javax.swing.JButton();
         btnUsuDelete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -55,15 +54,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         btnUsuCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuCreateActionPerformed(evt);
-            }
-        });
-
-        btnUsuread.setText("Pesquisar");
-        btnUsuread.setToolTipText("Pesquisar");
-        btnUsuread.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuread.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsureadActionPerformed(evt);
             }
         });
 
@@ -213,12 +203,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUsuread, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUsuUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addGap(137, 137, 137))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,8 +242,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnUsuread, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                     .addComponent(btnUsuUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsuDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
@@ -290,30 +277,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         objCliDAO.inserirCliente(objCliDTO);
 
     }//GEN-LAST:event_btnUsuCreateActionPerformed
-
-    private void btnUsureadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsureadActionPerformed
-
-        int id_cliente = Integer.parseInt(txtIdCli.getText());
-        String nome_cliente = txtNomeCli.getText();
-        String endereco_cliente = txtEnderecoCli.getText();
-        String telefone_cliente = txtTelefoneCli.getText();
-        String email_cliente = txtTelefoneCli.getText();
-        String cpf_cliente = txtTelefoneCli.getText();
-        String cnpj_cliente = txtTelefoneCli.getText();
-
-        ClientesDTO objCliDTO = new  ClientesDTO();
-         objCliDTO.setId_cliente(id_cliente);
-         objCliDTO.setNome_cliente(nome_cliente);
-         objCliDTO.setEndereço_cliente(endereco_cliente);
-         objCliDTO.setTelefone_cliente(telefone_cliente);
-         objCliDTO.setEmail_cliente(email_cliente);
-         objCliDTO.setCpf_cliente(cpf_cliente);
-         objCliDTO.setCnpj_cliente(cnpj_cliente);
-
-        ClienteDAO objCliDAO = new ClienteDAO();
-        objCliDAO.pesquisar(objCliDTO);
-
-    }//GEN-LAST:event_btnUsureadActionPerformed
 
     private void btnUsuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuUpdateActionPerformed
 
@@ -413,7 +376,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUsuCreate;
     private javax.swing.JButton btnUsuDelete;
     private javax.swing.JButton btnUsuUpdate;
-    private javax.swing.JButton btnUsuread;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -224,10 +224,10 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
          
             int linhaSel = tbAgenda.getSelectedRow();
             if(linhaSel != -1 ){
-            String nome = tbAgenda.getValueAt(linhaSel, 1).toString();
-            String data = tbAgenda.getValueAt(linhaSel, 2).toString();
-            String hora = tbAgenda.getValueAt(linhaSel, 3).toString();
-            String assunto = tbAgenda.getValueAt(linhaSel, 4).toString();
+            String nome = tbAgenda.getValueAt(linhaSel, 0).toString();
+            String data = tbAgenda.getValueAt(linhaSel, 1).toString();
+            String hora = tbAgenda.getValueAt(linhaSel, 2).toString();
+            String assunto = tbAgenda.getValueAt(linhaSel, 3).toString();
             
             txtNome.setText(nome);
             txtData.setText(data);
